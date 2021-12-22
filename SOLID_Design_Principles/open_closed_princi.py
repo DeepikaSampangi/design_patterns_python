@@ -93,6 +93,7 @@ class AndSpecification(Specification):
 
 class BetterFilter(Filter):
     def filter(self, items, spec):
+        print(f"this is spec for {items} - {spec}")
         for item in items:
             if spec.is_satisfied(item):
                 yield item
