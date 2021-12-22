@@ -80,17 +80,25 @@ class MultiFunctionDevice(Printer, Scanner, Fax):  # , Fax, etc
     def scan(self, document):
         pass
 
+    @abstractmethod
+    def fax(self, document):
+        pass
+
 
 class MultiFunctionMachine(MultiFunctionDevice):
-    def __init__(self, printer, scanner):
+    def __init__(self, printer, scanner, fax):
         self.printer = printer
         self.scanner = scanner
+        self.fax = fax
 
     def print(self, document):
         self.printer.print(document)
 
     def scan(self, document):
         self.scanner.scan(document)
+
+    def fax(self, document):
+        self.fax.fax(document)
 
 
 printer = OldFashionedPrinter()
